@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Windows Classic Clock</title>
+    <!-- 1枚目の画像に似た、おしゃれで太いフォント（Montserrat）を読み込む -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* OBS上で背景を透明にする設定 */
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: transparent; 
+            overflow: hidden;
+        }
+
+        /* ウィンドウ全体の外枠 */
+        .window {
+            width: 260px;
+            background-color: #ECE9D8; /* レトロなウィンドウの背景色 */
+            border: 2px solid #0831D9; /* ウィンドウの青い枠線 */
+            border-radius: 8px 8px 0 0;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 青いタイトルバー */
+        .title-bar {
+            background: linear-gradient(to bottom, #0058EE 0%, #3593FF 8%, #288EFF 40%, #127DFF 88%, #0366F0 100%);
+            padding: 3px 5px 3px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 6px 6px 0 0;
+            color: white;
+            font-family: 'Tahoma', 'Meiryo', sans-serif; /* タイトルバーは標準的なフォント */
+            font-size: 13px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+        }
+
+        /* 閉じるボタン（バツ印） */
+        .close-btn {
+            background: linear-gradient(to bottom, #ECA392, #D4422B);
+            border: 1px solid white;
+            border-radius: 3px;
+            color: white;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            text-shadow: none;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* 時計を表示する白いエリア */
+        .content {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 15px 10px;
+            text-align: center;
+            color: #111111;
+            /* ここで読み込んだMontserratフォントを適用 */
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; /* Extra Boldで太く */
+        }
+
+        /* LIVEバッジ */
+        .live-badge {
+            display: inline-block;
+            border: 3px solid #111111;
+            border-radius: 6px;
+            padding: 2px 12px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        /* 時間のテキスト */
+        .time {
+            font-size: 65px; /* 少しサイズアップ */
+            line-height: 1.1;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        /* 点滅するコロン */
+        .colon {
+            animation: blink 1s step-start infinite;
+            position: relative;
+            top: -3px; /* コロンの縦位置を微調整 */
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* 日付と時間の間の区切り線 */
+        .divider {
+            border-top: 4px solid #111111;
+            margin: 5px auto 10px auto;
+            width: 90%;
+        }
+
+        /* 日付のテキスト */
+        .date {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <!-- タイトルバー -->
+        <div class="title-bar">
+            <span>現在の時刻</span>
+            <div class="close-btn">×</div>
+        </div>
+        
+        <!-- メインコンテンツ（時計部分） -->
+        <div class="content">
+            <div class="live-badge">LIVE</div>
+            <div class="time">
+                <span id="hours">00</span><span class="colon">:</span><span id="minutes">00</span>
+            </div>
+            <div class="divider"></div>
+            <div class="date" id="date">00/00 Day</div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            // 時間と分の取得（常に2桁表示）
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            
+            // 月と日の取得（常に2桁表示）
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const date = String(now.getDate()).padStart(2, '0');
+            
+            // 曜日の取得（英語表記）
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const day = days[now.getDay()];
+
+            // HTMLの要素を書き換え
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('date').textContent = `${month}/${date} ${day}`;
+        }
+
+        // 1秒ごとに時計を更新
+        setInterval(updateClock, 1000);
+        
+        // 読み込み時にすぐ1回実行
+        updateClock();
+    </script>
+</body>
+</html>
