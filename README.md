@@ -8,8 +8,7 @@
 ### 1. Windows クラシック風 時計ウィジェット (`clock/retro_clock.html`)
 
 <!-- ▼▼▼ 時計の画像はここから ▼▼▼ -->
-![時計ウィジェットのプレビュー]<img width="155" height="133" alt="obs" src="https://github.com/user-attachments/assets/199c67a9-1fd0-4606-b4e4-a083bd6f7287" />
-
+<img width="155" height="133" alt="obs" src="https://github.com/user-attachments/assets/199c67a9-1fd0-4606-b4e4-a083bd6f7287" />
 <!-- ▲▲▲ 時計の画像はここまで ▲▲▲ -->
 
 懐かしのレトロなPCウィンドウをモチーフにしたデジタル時計ウィジェットです。実際の配信画面に重ねると、背景が綺麗に透過されて表示されます。
@@ -24,8 +23,7 @@
 ### 2. すりガラス風 天気予報ウィジェット (`weather/weather_widget.html`)
 
 <!-- ▼▼▼ 天気の画像はここから ▼▼▼ -->
-![天気予報ウィジェットのプレビュー]<img width="109" height="126" alt="obs - コピー" src="https://github.com/user-attachments/assets/834d88dd-9b00-4db9-9a20-3805bd25fe47" />
-
+<img width="109" height="126" alt="obs - コピー" src="https://github.com/user-attachments/assets/834d88dd-9b00-4db9-9a20-3805bd25fe47" />
 <!-- ▲▲▲ 天気の画像はここまで ▲▲▲ -->
 
 指定した複数都市の天気を自動でループ表示する、美しくモダンな天気予報ウィジェットです。背後のゲーム映像やカメラ映像がほんのりと透ける仕様になっています。
